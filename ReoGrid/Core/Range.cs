@@ -21,10 +21,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 
-#if EX_SCRIPT
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT
-
 using unvell.ReoGrid.Core;
 using unvell.ReoGrid.Events;
 using unvell.ReoGrid.Graphics;
@@ -482,17 +478,6 @@ namespace unvell.ReoGrid
 					RangeDataChanged(this, new RangeEventArgs(range));
 				}
 
-#if EX_SCRIPT
-				if (this.Srm != null && this.worksheetObj != null)
-				{
-					var ondatachange = Srm.DefaultContext.EvaluatePropertyGet(this.worksheetObj, "ondatachange");
-
-					if (ondatachange != null)
-					{
-						Srm.InvokeFunctionIfExisted(this.worksheetObj, "ondatachange", new RSRangeObject(this, range));
-					}
-				}
-#endif
 			}
 		}
 

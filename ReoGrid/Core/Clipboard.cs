@@ -38,11 +38,6 @@ using Avalonia.Input;
 
 #endif // WINFORM
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT
-
 namespace unvell.ReoGrid
 {
     partial class Worksheet
@@ -209,14 +204,6 @@ namespace unvell.ReoGrid
                             return false;
                         }
                     }
-
-#if EX_SCRIPT
-                    var scriptReturn = RaiseScriptEvent("oncopy");
-                    if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-                    {
-                        return false;
-                    }
-#endif // EX_SCRIPT
 
                     // highlight current copy range
                     currentCopingRange = selectionRange;
@@ -510,14 +497,6 @@ namespace unvell.ReoGrid
                 }
             }
 
-#if EX_SCRIPT
-            object scriptReturn = RaiseScriptEvent("onpaste", new RSRangeObject(this, range));
-            if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-            {
-                return false;
-            }
-#endif // EX_SCRIPT
-
             return true;
         }
 
@@ -550,14 +529,6 @@ namespace unvell.ReoGrid
                         return false;
                     }
                 }
-
-#if EX_SCRIPT
-                object scriptReturn = RaiseScriptEvent("oncut");
-                if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-                {
-                    return false;
-                }
-#endif
 
                 if (!HasSettings(WorksheetSettings.Edit_Readonly))
                 {

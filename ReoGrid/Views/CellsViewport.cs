@@ -22,11 +22,6 @@ using System;
 using System.Diagnostics;
 #endif
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT
-
 #if WINFORM || ANDROID
 using RGFloat = System.Single;
 #elif !GLOBALUSING
@@ -1207,14 +1202,6 @@ namespace unvell.ReoGrid.Views
                             }
                         }
 
-#if EX_SCRIPT
-                        object scriptReturn = sheet.RaiseScriptEvent("onmousedown", RSUtility.CreatePosObject(pos));
-                        if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-                        {
-                            return true;
-                        }
-#endif // EX_SCRIPT
-
                         if (!isProcessed)
                         {
                             this.SetFocus();
@@ -1799,15 +1786,6 @@ namespace unvell.ReoGrid.Views
 
                             sheet.RaiseSelectionRangeChanged(new RangeEventArgs(sheet.selectionRange));
 
-#if EX_SCRIPT
-                            object scriptReturn = sheet.RaiseScriptEvent("onmouseup", RSUtility.CreatePosObject(sheet.selEnd));
-
-                            // run if script return true or nothing
-                            if (scriptReturn == null || ScriptRunningMachine.GetBoolValue(scriptReturn))
-                            {
-                                sheet.RaiseScriptEvent("onselectionchange");
-                            }
-#endif // EX_SCRIPT
                         }
 
                         {

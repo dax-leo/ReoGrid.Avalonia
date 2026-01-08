@@ -219,15 +219,6 @@ namespace unvell.ReoGrid
 
             #endregion // Workbook Event Attach
 
-#if EX_SCRIPT
-            this.workbook.SRMInitialized += (s, e) =>
-                {
-                    if (this.workbook.workbookObj != null)
-                    {
-                        this.workbook.workbookObj.ControlInstance = this;
-                    }
-                };
-#endif // EX_SCRIPT
 
             // create and set default worksheet
             this.workbook.AddWorksheet(this.workbook.CreateWorksheet());
@@ -1111,48 +1102,6 @@ namespace unvell.ReoGrid
         /// </summary>
         public event EventHandler SettingsChanged;
         #endregion // Settings
-
-        #region Script
-
-        /// <summary>
-        /// Get or set script content
-        /// </summary>
-        public string Script
-        {
-            get { return this.workbook.Script; }
-            set { this.workbook.Script = value; }
-        }
-
-#if EX_SCRIPT
-        // TODO: srm should have only one instance 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Browsable(false)]
-        public unvell.ReoScript.ScriptRunningMachine Srm
-        {
-            get { return this.workbook.Srm; }
-        }
-
-        /// <summary>
-        /// Run workbook script.
-        /// </summary>
-        /// <returns>Return value from script.</returns>
-        public object RunScript()
-        {
-            return this.workbook.RunScript();
-        }
-
-        /// <summary>
-        /// Run specified script by workbook.
-        /// </summary>
-        /// <param name="script">Script to be executed.</param>
-        /// <returns>Return value from specified script.</returns>
-        public object RunScript(string script = null)
-        {
-            return this.workbook.RunScript(script);
-        }
-#endif
-
-        #endregion // Script
 
         #region Internal Exceptions
         /// <summary>

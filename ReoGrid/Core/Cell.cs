@@ -32,11 +32,6 @@ using RGFloat = System.Double;
 using RGFloat = System.Double;
 #endif // WINFORM
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT
-
 using unvell.Common;
 
 using unvell.ReoGrid.Core;
@@ -177,9 +172,6 @@ namespace unvell.ReoGrid
 			}
 
 			if (data is string || data is StringBuilder
-#if EX_SCRIPT
- || data is StringObject
-#endif // EX_SCRIPT
 )
 			{
 				string str = data is string ? (string)(data) : Convert.ToString(data);
@@ -640,9 +632,6 @@ namespace unvell.ReoGrid
 		{
 			if (CellDataChanged != null) CellDataChanged(this, new CellEventArgs(cell));
 
-#if EX_SCRIPT
-			RaiseScriptEvent("ondatachange", new RSCellObject(this, cell.InternalPos, cell));
-#endif
 		}
 
 		/// <summary>

@@ -59,8 +59,10 @@
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <AvaloniaXaml Remove="Script\**" />
     <Compile Remove="Android\**" />
     <Compile Remove="iOS\**" />
+    <Compile Remove="Script\**" />
     <Compile Remove="Test\**" />
     <Compile Remove="WinForm\**" />
     <Compile Remove="WPF\**" />
@@ -70,11 +72,13 @@
     <Content Remove="WinForm\**" />
     <EmbeddedResource Remove="Android\**" />
     <EmbeddedResource Remove="iOS\**" />
+    <EmbeddedResource Remove="Script\**" />
     <EmbeddedResource Remove="Test\**" />
     <EmbeddedResource Remove="WinForm\**" />
     <EmbeddedResource Remove="WPF\**" />
     <None Remove="Android\**" />
     <None Remove="iOS\**" />
+    <None Remove="Script\**" />
     <None Remove="Test\**" />
     <None Remove="WinForm\**" />
     <None Remove="WPF\**" />
@@ -91,17 +95,11 @@
     <Compile Remove="Avalonia\TemplatedControl1.axaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime" Condition="'$(Configuration)|$(Platform)'=='AvaloniaDebug|AnyCPU'">
-      <HintPath>..\Ref\Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Update="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Update="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="unvell.ReoScript">
-      <HintPath>..\Ref\unvell.ReoScript.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

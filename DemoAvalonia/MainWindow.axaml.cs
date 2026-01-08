@@ -30,7 +30,7 @@ namespace unvell.ReoGrid.WPFDemo
             grid.CurrentWorksheetChanged += (s, e) => UpdateMenuChecks();
 
             // add demo sheet 1: document template
-            AddDemoSheet1();
+            //AddDemoSheet1();
 
             // add demo sheet 2: chart and drawing
             AddDemoSheet2();

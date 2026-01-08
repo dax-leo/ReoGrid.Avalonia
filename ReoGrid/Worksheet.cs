@@ -36,10 +36,6 @@ using unvell.ReoGrid.Views;
 using unvell.ReoGrid.CellTypes;
 using unvell.ReoGrid.Utility;
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT
 
 #if WINFORM || WPF
 //using CellArray = unvell.ReoGrid.Data.JaggedTreeArray<unvell.ReoGrid.ReoGridCell>;
@@ -1607,13 +1603,6 @@ namespace unvell.ReoGrid
                 if (args.IsCancelled) return true;
             }
 
-#if EX_SCRIPT
-            object rs = RaiseScriptEvent("onkeydown", new RSKeyEvent((int)keyData));
-            if (rs != null && !ScriptRunningMachine.GetBoolValue(rs))
-            {
-                return true;
-            }
-#endif
 
             bool isProcessed = false;
 
@@ -1947,13 +1936,6 @@ namespace unvell.ReoGrid
 
         internal bool OnKeyUp(KeyCode keyData)
         {
-#if EX_SCRIPT
-            object rs = RaiseScriptEvent("onkeyup", new RSKeyEvent((int)keyData));
-            if (rs != null && !ScriptRunningMachine.GetBoolValue(rs))
-            {
-                return false; 
-            }
-#endif
 
             if (!this.selStart.IsEmpty &&
                 // if there is request to cancel notify to cell body about this KeyUp event

@@ -100,17 +100,6 @@ namespace unvell.ReoGrid.Main
 #endif
     }
 
-#if EX_SCRIPT
-    internal interface IScriptExecutableControl
-	{
-		string Script { get; set; }
-
-		unvell.ReoScript.ScriptRunningMachine Srm { get; }
-
-		object RunScript(string script);
-	}
-#endif // EX_SCRIPT
-
 	internal interface IPersistenceWorkbook
 	{
 		void Save(string path, FileFormat format = FileFormat._Auto, System.Text.Encoding encoding = null);

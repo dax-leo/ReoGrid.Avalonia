@@ -4,11 +4,6 @@ using System.Linq;
 using System.Text;
 using unvell.ReoGrid.Events;
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT;
-
 #if WINFORM || ANDROID
 using RGFloat = System.Single;
 #elif WPF
@@ -202,16 +197,6 @@ namespace unvell.ReoGrid
 
 				editText = arg.EditText;
 			}
-
-#if EX_SCRIPT
-			// v0.8.2: 'beforeCellEdit' renamed to 'onCellEdit'
-			// v0.8.5: 'onCellEdit' renamed to 'oncelledit'
-			object scriptReturn = RaiseScriptEvent("oncelledit", new RSCellObject(this, cell.InternalPos, cell));
-			if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-			{
-				return false;
-			}
-#endif
 
 			if (cell.body != null)
 			{

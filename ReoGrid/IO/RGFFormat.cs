@@ -837,38 +837,6 @@ namespace unvell.ReoGrid
 #endif // PRINT
             #endregion // Apply Print Settings
 
-            #region Script
-#if EX_SCRIPT
-
-            // load scripts
-            // TODO: include others scripts as resource document
-            if (xmlSheet.head != null && xmlSheet.head.script != null
-                && !string.IsNullOrEmpty(xmlSheet.head.script.content))
-            {
-                if (this.workbook == null)
-                {
-                    throw new InvalidOperationException("Current worksheet is not attached to any workbook, loading script requires that workbook is attached. Try add worksheet into workbook firstly.");
-                }
-
-                // initialize SRM
-                this.workbook.InitSRM();
-
-                this.workbook.Script = xmlSheet.head.script.content;
-            }
-            else
-            {
-                if (this.workbook != null)
-                {
-                    this.workbook.Script = null;
-                }
-            }
-
-            if (this.Srm != null)
-            {
-                this.RaiseScriptEvent("onload");
-            }
-#endif // EX_SCRIPT
-            #endregion // Script
 
 #if DEBUG
             stop.Stop();
@@ -1070,7 +1038,7 @@ namespace unvell.ReoGrid
                         controlVersion = fvi.FileVersion,
                     },
 
-                    script = new RGXmlScript() { content = this.workbook.Script },
+                    
                 },
 
                 style = StyleUtility.ConvertToXmlStyle(this.RootStyle),

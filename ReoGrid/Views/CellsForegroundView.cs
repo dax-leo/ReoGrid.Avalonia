@@ -21,11 +21,6 @@ using System;
 using System.Diagnostics;
 #endif
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-using unvell.ReoGrid.Script;
-#endif // EX_SCRIPT
-
 #if WINFORM || ANDROID
 using RGFloat = System.Single;
 #elif !GLOBALUSING

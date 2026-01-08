@@ -23,19 +23,16 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Configurations>Debug;Release</Configurations>
      <AvaloniaVersion>11.0.1</AvaloniaVersion>
+
+	  
+	  <SelfContained>true</SelfContained>
+	  <PublishTrimmed>true</PublishTrimmed>
+	  <TrimMode>partial</TrimMode>
+	  <PublishAot>true</PublishAot>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\Ref\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="unvell.ReoScript, Version=1.5.0.0, Culture=neutral, PublicKeyToken=85339a558a3a0c58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Ref\unvell.ReoScript.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
@@ -47,7 +44,6 @@
     <PackageReference Include="Avalonia.Desktop" Version="11.3.10" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.3.8" />
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.10" />
       <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview3.19128.7" />
   </ItemGroup>

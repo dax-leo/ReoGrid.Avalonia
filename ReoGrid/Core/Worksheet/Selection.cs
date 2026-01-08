@@ -23,10 +23,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 #endif // DEBUG
 
-#if EX_SCRIPT
-using unvell.ReoScript;
-#endif // EX_SCRIPT
-
 using unvell.ReoGrid.Events;
 using unvell.ReoGrid.Views;
 using unvell.ReoGrid.Graphics;
@@ -716,18 +712,11 @@ namespace unvell.ReoGrid
 				{
 					this.SelectionRangeChanging?.Invoke(this, new RangeEventArgs(this.selectionRange));
 
-#if EX_SCRIPT
-					// comment out this if you get performance problem when using script extension
-					RaiseScriptEvent("onselectionchanging");
-#endif
 				}
 				else
 				{
 					this.SelectionRangeChanged?.Invoke(this, new RangeEventArgs(this.selectionRange));
 
-#if EX_SCRIPT
-					RaiseScriptEvent("onselectionchange");
-#endif
 				}
 
 				RequestInvalidate();
@@ -1079,14 +1068,6 @@ namespace unvell.ReoGrid
 				}
 			}
 
-#if EX_SCRIPT
-			var scriptReturn = RaiseScriptEvent("onnextfocus");
-			if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-			{
-				return;
-			}
-#endif
-
 			switch (selectionForwardDirection)
 			{
 				case SelectionForwardDirection.Right:
@@ -1141,14 +1122,6 @@ namespace unvell.ReoGrid
 					return;
 				}
 			}
-
-#if EX_SCRIPT
-			var scriptReturn = RaiseScriptEvent("onpreviousfocus");
-			if (scriptReturn != null && !ScriptRunningMachine.GetBoolValue(scriptReturn))
-			{
-				return;
-			}
-#endif
 
 			switch (selectionForwardDirection)
 			{

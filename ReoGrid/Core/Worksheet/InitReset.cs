@@ -108,19 +108,6 @@ namespace unvell.ReoGrid
 				this.viewportController.Reset();
 			}
 
-#if EX_SCRIPT
-			//settings |=
-			//	// auto run script if loaded from file
-			//		WorkbookSettings.Script_AutoRunOnload
-			//	// confirm to user whether allow to run script after loaded from file
-			//	| WorkbookSettings.Script_PromptBeforeAutoRun;
-
-			//InitSRM();
-			//this.worksheetObj = null;
-
-			RaiseScriptEvent("onload");
-#endif // EX_SCRIPT
-
 #if DEBUG
 			sw.Stop();
 			long ms = sw.ElapsedMilliseconds;
@@ -218,13 +205,6 @@ namespace unvell.ReoGrid
 				this.traceDependentArrows.Clear();
 			}
 #endif // FORMULA
-
-#if EX_SCRIPT
-			if (Srm != null)
-			{
-				RaiseScriptEvent("unload");
-			}
-#endif // EX_SCRIPT
 
 			// unfreeze rows and columns
 			CellPosition pos = this.FreezePos;

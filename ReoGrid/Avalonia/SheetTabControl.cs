@@ -53,10 +53,10 @@ namespace unvell.ReoGrid.AvaloniaPlatform
     };
     Bitmap imageSource = new Bitmap(new System.IO.MemoryStream(unvell.ReoGrid.Properties.Resources.NewBuildDefinition_8952_inactive_png));
     Bitmap imageHoverSource = new Bitmap(new System.IO.MemoryStream(unvell.ReoGrid.Properties.Resources.NewBuildDefinition_8952_png));
-
+    
     public SheetTabControl()
     {
-
+      
       this.BorderColor = Colors.DeepSkyBlue;
       this.Background = new SolidColorBrush(SystemColors.ControlLight);
 
